@@ -1,9 +1,11 @@
 package main.resources.pages;
 
 import org.openqa.selenium.By;
-import main.resources.constantes;
 
-public class pageLogin {
+import main.resources.GenericPage;
+
+
+public class pageLogin extends GenericPage{
 	//variables
 	private By email_user = By.id("email_user");
 	private By user_password = By.id("user_password");

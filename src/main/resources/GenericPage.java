@@ -2,6 +2,8 @@ package main.resources;
 
 import org.openqa.selenium.WebDriver;
 
-public class constantes {
-	public WebDriver driver;
+public class GenericPage {
+	
+	protected static WebDriver driver;
+	
 }

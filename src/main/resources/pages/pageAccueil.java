@@ -1,6 +1,8 @@
 package main.resources.pages;
 
-public class pageAccueil {
+import main.resources.GenericPage;
+
+public class pageAccueil extends GenericPage{
 
 	
 	

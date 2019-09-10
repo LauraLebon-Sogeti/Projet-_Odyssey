@@ -12,9 +12,9 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-import main.resources.constantes;
+import main.resources.GenericPage;
 
-public class fonctionsCucumber {
+public class fonctionsCucumber extends GenericPage {
 	
 	
 	private String urlSite;
