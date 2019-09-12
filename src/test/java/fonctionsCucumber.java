@@ -1,29 +1,28 @@
-package test.java;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.junit.*;
-import cucumber.api.java.en.*;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+import io.cucumber.java.en.*;
+import io.cucumber.core.api.Scenario;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 
-import main.resources.GenericPage;
 
-public class fonctionsCucumber extends GenericPage {
+public class fonctionsCucumber {
 	
+	private WebDriver driver;
 	
 	private String urlSite;
 
 	@Before
 	public void cucumberSetup(Scenario scenario) {
-		//En cucumber, les before et after sont là pour pouvoir gérer les logs, plus que l'ouverture et la fermeture du navigateur
+		//En cucumber, les before et after sont lï¿½ pour pouvoir gï¿½rer les logs, plus que l'ouverture et la fermeture du navigateur
 		    System.out.println("------------------------------");
-		    System.out.println("Début du test - " + scenario.getName());
+		    System.out.println("DÃ©but du test - " + scenario.getName());
 		    System.out.println("------------------------------");
 	}
 	
@@ -33,7 +32,7 @@ public class fonctionsCucumber extends GenericPage {
 			driver.quit();
 		}
 	    System.out.println("------------------------------");
-	    System.out.println(scenario.getName() + " Status - " + scenario.getStatus());
+	    System.out.println(scenario.getName() + " Statut - " + scenario.getStatus());
 	    System.out.println("------------------------------");
 	}
 	
@@ -56,7 +55,6 @@ public class fonctionsCucumber extends GenericPage {
 	@When("^le navigateur firefox est ouvert$")
 	public void ouvrirFirefox() {
 		driver = new FirefoxDriver();
-		verifierNavigateur();
 	}
 	
 	public void verifierNavigateur() {

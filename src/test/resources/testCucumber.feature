@@ -5,9 +5,10 @@ Scenario Outline: tests connexion Odyssey
 	And le navigateur <navigateur> est ouvert
 	When je tape URL du site
 	Then la page accueil de Odyssey est affichee
-	
+
+#Ici : commenter ou décommenter le navigateur que vous souhaitez exécuter	
 Examples:
 	| navigateur | 
-	| firefox |
-	| chrome    | 	
+	| chrome   | 
+	| firefox   | 	
 		

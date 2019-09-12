@@ -1,5 +1,7 @@
-package main.resources.pages;
+package pages;
 
-public class pageInscription {
+import GenericPage;
+
+public class pageInscription extends GenericPage {
 
 }
