@@ -8,12 +8,7 @@ import org.junit.runner.RunWith;
  
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin= {
-                "json:target/cucumber/testCucumber.json",
-                "html:target/cucumber/testCucumber.html",
-                "pretty"
-        },
-        tags = {"~@ignored"}
+
 )
 
 public class runnerJUnit {
