@@ -8,11 +8,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.junit.*;
-import cucumber.api.java.en.*;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+import io.cucumber.java.en.*;
+import io.cucumber.core.api.Scenario;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 
 import main.java.GenericPage;
 import pages.pageLogin;
@@ -26,6 +27,12 @@ public class P000839_46 extends GenericPage {
 	@Given("^Chrome est ouvert sur le site test-odyssey en francais$")
 	public void chromeEstOuvert(){
 		ouvrirNavigateur("chrome");
+		Boolean siteOuvert = driver.findElement(By.xpath("//a[contains(@href,'login')]")).isDisplayed();
+		Assert.assertTrue(siteOuvert);
+	}
+	@Given("^firefox est ouvert sur le site test-odyssey en francais$")
+	public void firefoxEstOuvert(){
+		ouvrirNavigateur("firefox");
 		Boolean siteOuvert = driver.findElement(By.xpath("//a[contains(@href,'login')]")).isDisplayed();
 		Assert.assertTrue(siteOuvert);
 	}
