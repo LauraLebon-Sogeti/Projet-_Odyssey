@@ -1,3 +1,17 @@
 /target
 /target/*
 /.metadata/*
+/target/*
+/.settings/org.eclipse.core.resources.prefs
+/.settings/org.eclipse.jdt.core.prefs
+/.settings/org.eclipse.jdt.ui.prefs
+/.settings/org.eclipse.wst.xsl.core.prefs
+/target/classes/META-INF/maven/Cucumber/Cucumber/pom.properties
+/target/classes/META-INF/maven/Cucumber/Cucumber/pom.xml
+/target/cucumber/testCucumber.html/formatter.js
+/target/cucumber/testCucumber.html/report.js
+/target/cucumber/testCucumber.html/style.css
+/target/cucumber/testCucumber.json
+/target/test-classes/fonctionsCucumber.class
+/target/test-classes/runnerJUnit.class
+/target/test-classes/testCucumber.feature
