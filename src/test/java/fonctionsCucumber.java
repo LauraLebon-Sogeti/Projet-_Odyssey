@@ -12,7 +12,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 
-public class fonctionsCucumber {
+public class fonctionsCucumber extends GenericPage{
 	
 	private WebDriver driver;
 	

@@ -1,15 +1,17 @@
 package pages;
 
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import main.java.GenericPage;
+
 
 
 public class pageLogin extends GenericPage{
 	//variables
+
 	private By user_email = By.id("user_email");
 	private By user_password = By.id("user_password");
 	private By btn_cnx = By.name("commit");
@@ -33,8 +35,8 @@ public class pageLogin extends GenericPage{
 		wait.until(ExpectedConditions.elementToBeClickable(btn_cnx));
 		driver.findElement(btn_cnx).click();
 		
-		Boolean connexionReussie = driver.findElement(By.xpath("//*[contains(text(),'Connecté avec succès.')]")).isDisplayed();
+		Boolean connexionReussie = driver.findElement(By.xpath("//*[contains(text(),'Connectï¿½ avec succï¿½s.')]")).isDisplayed();
 		return connexionReussie;
 	}
-	
+
 }
