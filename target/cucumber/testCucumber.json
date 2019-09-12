@@ -1,0 +1,172 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 4859121000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "fonctionsCucumber.setup()"
+            }
+          }
+        ],
+        "line": 11,
+        "name": "tests connexion Odyssey",
+        "description": "",
+        "id": "exemplecucumber;tests-connexion-odyssey;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 1375631300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "fonctionsCucumber.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 182767100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "j\u0027ai url du site",
+            "match": {
+              "location": "fonctionsCucumber.recupererUrl()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 50400,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "le navigateur est ouvert",
+            "match": {
+              "location": "fonctionsCucumber.verifierNavigateur()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3996117800,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "je tape URL du site",
+            "match": {
+              "location": "fonctionsCucumber.lancerSite()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 13157700,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "la page accueil de Odyssey est affichee",
+            "match": {
+              "location": "fonctionsCucumber.verifierAffichagePage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 3364440800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "fonctionsCucumber.setup()"
+            }
+          }
+        ],
+        "line": 12,
+        "name": "tests connexion Odyssey",
+        "description": "",
+        "id": "exemplecucumber;tests-connexion-odyssey;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 1188712500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "fonctionsCucumber.teardown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 29600,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "j\u0027ai url du site",
+            "match": {
+              "location": "fonctionsCucumber.recupererUrl()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 33100,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "le navigateur est ouvert",
+            "match": {
+              "location": "fonctionsCucumber.verifierNavigateur()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3354135900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "je tape URL du site",
+            "match": {
+              "location": "fonctionsCucumber.lancerSite()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8933900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "la page accueil de Odyssey est affichee",
+            "match": {
+              "location": "fonctionsCucumber.verifierAffichagePage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "exempleCucumber",
+    "description": "",
+    "id": "exemplecucumber",
+    "keyword": "Feature",
+    "uri": "testCucumber.feature"
+  }
+]
