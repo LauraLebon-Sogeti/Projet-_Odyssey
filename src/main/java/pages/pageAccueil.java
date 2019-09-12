@@ -1,6 +1,6 @@
 package pages;
 
-import GenericPage;
+import main.java.GenericPage;
 
 public class pageAccueil extends GenericPage{
 
