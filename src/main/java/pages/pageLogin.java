@@ -37,7 +37,7 @@ public class pageLogin extends GenericPage{
 		wait.until(ExpectedConditions.elementToBeClickable(btn_cnx));
 		driver.findElement(btn_cnx).click();
 		
-		Boolean connexionReussie = driver.findElement(By.xpath("//*[contains(text(),'Connect� avec succ�s.')]")).isDisplayed();
+		Boolean connexionReussie = driver.findElement(By.xpath("//*[contains(text(),'Connecté avec succès.')]")).isDisplayed();
 		return connexionReussie;
 	}
 

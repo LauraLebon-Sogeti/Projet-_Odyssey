@@ -1,5 +1,3 @@
-package main.resources;
-
 import org.openqa.selenium.WebDriver;
 
 public class GenericPage {
