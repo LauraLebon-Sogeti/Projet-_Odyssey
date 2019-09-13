@@ -20,22 +20,21 @@ import org.testng.AssertJUnit;
 
 
 	public class P000839_44a extends GenericPage {
-		protected static WebDriver driver2;
-	        
+		private static WebDriver driver;
+		
 	        private String urlSite;
-	        private By lienSeConnecter = By.xpath("//a[contains(text(),'Se connecter')]");
-	        private By dropDownLangue = By.xpath("//div[@class='ui item dropdown active visible']//i[@class='dropdown icon']");
-	        private By itemFrancais = By.xpath("//a[contains(text(),'Français')]");
-	        private By titre = By.xpath("//div[@class='ui fluid dropdown selection active visible']//i[@class='dropdown icon']");
+	        private By dropDownLangue = By.xpath("//*[@id=\"app\"]/div[3]/div/div[1]");
+	        private By itemFrancais = By.xpath("//a[contains(text(),'Fr')]");
+	        private By titre = By.xpath("//div[contains(@class,'ui fluid dropdown selection')]//i[@class='dropdown icon']");
 	        private By titreMr = By.xpath("//div[@class='item active selected'][contains(text(),'Mr')]");
 	        private By titreMme = By.xpath("//div[@class='item active selected'][contains(text(),'Mme')]");
-	        private By prenom = By.xpath("//input[@id='user_firstname']");
+	        private By prenom = By.xpath("/html/body/div/div[2]/section[2]/form/div[1]/div[2]/div/input");
 	        private By nom = By.xpath("//input[@id='user_lastname']");
 	        private By indicatif = By.xpath("//div[@class='ui label selection dropdown']//i[@class='dropdown icon']");
 	        private By indFrance = By.xpath("//div[contains(text(),'FRA')]");
 	        private By telephone = By.xpath("//input[@id='user_phone']");
-	        private By mail = By.xpath("//input[@id='user_mail']");
-	        private By motDePasse = By.xpath("//input[@id='user_password']");
+	        private By mail = By.id("user_email");
+	        private By motDePasse = By.className("password");
 	        private By formation = By.xpath("//div[@id='course-group']//i[@class='dropdown icon']");
 	        private By formationDev = By.xpath("//div[contains(text(),'Web et mobile')]");
 	        private By campus= By.xpath("//div[@id='campus-field']//i[@class='dropdown icon']");
@@ -44,8 +43,8 @@ import org.testng.AssertJUnit;
 	        private By sessionMars2020 = By.xpath("//div[contains(text(),'2020 Mars')]");
 	        private By btnReveler = By.xpath("//a[@class='toggle']");
 	        private By btnCreationCompte = By.xpath("//input[@name='commit']");
-	        private By popUpErreur = By.xpath("/div[@class='ui alert icon message transition visible']");
-	        private By erreurPrenom = By.xpath("//li[contains(text(),'Prénom')]");
+	        private By popUpErreur = By.xpath("//div[contains(@class,'ui alert icon')]");
+	        private By erreurPrenom = By.xpath("//li[contains(text(),'Firstname')]");
 	        
         
 	        public String recupererUrl(){
@@ -60,73 +59,84 @@ import org.testng.AssertJUnit;
 	            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
 	            //System.setProperty("webdriver.chrome.driver",  System.getProperty("user.dir") + "\\chromedriver71.exe");
 	            
-	            driver2 = new ChromeDriver();
-	            WebDriverWait wait = new WebDriverWait(driver2, 10);
+	            driver = new ChromeDriver();
+	            WebDriverWait wait = new WebDriverWait(driver, 10);
 	        }
 	        
 	        @When("^le navigateur firefox est ouvert$")
 	        public void ouvrirFirefox() {
-	        	driver2 = new FirefoxDriver();
+	        	driver = new FirefoxDriver();
 	            verifierNavigateur();
 	        }
 	        
 	        public void verifierNavigateur() {
-	            AssertJUnit.assertTrue(driver2 != null);
+	            AssertJUnit.assertTrue(driver != null);
 	        }
 	        
 	        @When("^je tape URL du site$")
 	        public void lancerSite() {
-	        	driver2.get(urlSite);
+	        	driver.get(urlSite);
 	        }
 	        
 	        @Then("^la page accueil de Odyssey est affichee$")
 	        public void verifierAffichagePage() {
-	            String titrePage = driver2.getTitle();
+	            String titrePage = driver.getTitle();
 	            AssertJUnit.assertTrue(titrePage.contains("Odyssey"));
 	        }
 	        
-	        @Given("^je suis sur le formulaire d'inscription  sur le navigateur chrome$")
+	        @Given("^je suis sur le formulaire inscription  sur le navigateur chrome$")
 	       public void formulaireInscription() {
 	            recupererUrl();
-	        	ouvrirFirefox();
+	        	ouvrirChrome();
 	        	lancerSite();
 	        	verifierAffichagePage();
-	        	driver2.findElement(dropDownLangue).click();
-	        	driver2.findElement(itemFrancais).click();
-	        	driver2.findElement(lienSeConnecter).click();            
+/*	        	WebDriverWait wait = new WebDriverWait(driver, 60);
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(dropDownLangue));
+	    	    wait.until(ExpectedConditions.elementToBeClickable(dropDownLangue));
+	        	driver.findElement(dropDownLangue).click(); 
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(itemFrancais));
+	    		wait.until(ExpectedConditions.elementToBeClickable(itemFrancais));
+	        	driver.findElement(itemFrancais).click();
+*/	        	          
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(prenom));
+	    		wait.until(ExpectedConditions.elementToBeClickable(prenom));
+	    		
 	        }
 
 	        @When ("^je selectionne le titre Mr$")
 	        public void selectionTitreMr() {
-	        	WebDriverWait wait = new WebDriverWait(driver2, 60);
+	        	WebDriverWait wait = new WebDriverWait(driver, 10);
 	        	wait.until(ExpectedConditions.visibilityOfElementLocated(titre));
 	    		wait.until(ExpectedConditions.elementToBeClickable(titre));
-	        	driver2.findElement(titre).click();
+	        	driver.findElement(titre).click();
 	        	
-	        	driver2.findElement(titreMr).click();
+	        	driver.findElement(titreMr).click();
 	        	
 	          }
 	        
 	        @When("^je selectionne le titre Mme$")
 	        public void selectionTitreMme() {
-	        	WebDriverWait wait = new WebDriverWait(driver2, 60);
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
 	        	wait.until(ExpectedConditions.visibilityOfElementLocated(titre));
 	    		wait.until(ExpectedConditions.elementToBeClickable(titre));
-	        	driver2.findElement(titre).click();
-	        	driver2.findElement(titreMme).click();
+	        	driver.findElement(titre).click();
+	        	driver.findElement(titreMme).click();
 	          }
 	        
-	        @And("^je saisis le prenom INVALIDE 123899$")
+	        
+	        @Given("^je saisis le prenom INVALIDE 123899$")
 	        public void saisiePrenomInvalid1() {
-	        	WebDriverWait wait = new WebDriverWait(driver2, 60);
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
 	        	wait.until(ExpectedConditions.visibilityOfElementLocated(prenom));
 	    		wait.until(ExpectedConditions.elementToBeClickable(prenom));
-	            saisirChamp(prenom,"123899");
+	    		driver.findElement(prenom).clear();
+		    	driver.findElement(prenom).sendKeys("123899");
 	        }
 	        
-	        @And("^je saisis le prenom INVALIDE -vide-$")
+	        @Given("^je saisis le prenom INVALIDE -vide-$")
 	        public void saisiePrenomInvalid2() {
-	        	WebDriverWait wait = new WebDriverWait(driver2, 60);
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
 	        	wait.until(ExpectedConditions.visibilityOfElementLocated(prenom));
 	    		wait.until(ExpectedConditions.elementToBeClickable(prenom));
 	            saisirChamp(prenom,"");
@@ -134,63 +144,75 @@ import org.testng.AssertJUnit;
 	        
 	        @And ("^je saisis le nom DUPONT$")
 	        public void saisieNom_DUPONT() {
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(nom));
+	    		wait.until(ExpectedConditions.elementToBeClickable(nom));
 	            saisirChamp(nom,"DUPONT");
 	        }
 	        
-	        @And ("^je choisis l'indicatif du pays FRA$")
+	        @And ("^je choisis indicatif du pays FRA$")
 	        public void saisieIndicatif() {
-	        	driver2.findElement(indicatif).click();
-	        	driver2.findElement(indFrance).click();            
+	        	driver.findElement(indicatif).click();
+	        	driver.findElement(indFrance).click();            
 	        }
 	                
 	        @And ("^je saisis le numero de telephone  683090909$")
 	        public void saisieTelephone() {
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(telephone));
+	    		wait.until(ExpectedConditions.elementToBeClickable(telephone));
 	            saisirChamp(telephone,"683090909");
 	        }
 	        
-	        @And ("^je selectionne la  formation \"Web and mobile dev..$")
+	        @And ("^je selectionne la  formation Web and mobile dev..$")
 	        public void saisieFormation() {
-	        	driver2.findElement(formation).click();
-	        	driver2.findElement(formationDev).click();      
+	        	driver.findElement(formation).click();
+	        	driver.findElement(formationDev).click();      
 	        }
 	        
 	        @And("^je choisis le campus Nantes$")
 	        public void saisieCampus() {
-	        	driver2.findElement(campus).click();
-	        	driver2.findElement(campusVille).click();      
+	        	driver.findElement(campus).click();
+	        	driver.findElement(campusVille).click();      
 	        }    
 	        
 	        @And("^je choisis la session mars 2020$")
 	        public void saisieSession() {
-	            driver2.findElement(session).click();
-	            driver2.findElement(sessionMars2020).click();         
+	            driver.findElement(session).click();
+	            driver.findElement(sessionMars2020).click();         
 	        }
 	        
-	        @And ("^je saisis l'adresse mail dupontalain@yopmail.com$")
+	        @And ("^je saisis adresse mail dupontalain@yopmail.com$")
 	        public void saisieMail() {
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(mail));
+	    		wait.until(ExpectedConditions.elementToBeClickable(mail));
 	            saisirChamp(mail,"dupontalain@yopmail.com");
 	        }
 	                
 	        @And ("^je saisis le mot de passe WCSmotdepasse$")
 	        public void saisieMotDePasse() {
+	        	WebDriverWait wait = new WebDriverWait(driver, 60);
+	        	wait.until(ExpectedConditions.visibilityOfElementLocated(motDePasse));
+	    		wait.until(ExpectedConditions.elementToBeClickable(motDePasse));
 	            saisirChamp(motDePasse,"WCSmotdepasse");
 	        }
 	        @And("^je clique sur le bouton JE CREE MON COMPTE")
 	        public void creerCompte() {
-	        	driver2.findElement(btnCreationCompte).click();
+	        	driver.findElement(btnCreationCompte).click();
 	        }    
 	        
 	    
-	        @Then ("^une popup d'erreur s'affiche avec le type d'erreur$")
+	        @Then ("^un popup erreur est affiche avec le type erreur$")
 	        public void verifierPopUpErreur() {
-	        	driver2.findElement(popUpErreur).isDisplayed();
-	            String messageErreur = driver2.findElement(erreurPrenom).getText();
+	        	driver.findElement(popUpErreur).isDisplayed();
+	            String messageErreur = driver.findElement(erreurPrenom).getText();
 	            Assert.assertNull("pas de message d'erreur sur le prénom", messageErreur);
 	        }
 	        
 	    public static void saisirChamp(By champ,String valeur) {
-	    	driver2.findElement(champ).clear();
-	    	driver2.findElement(champ).sendKeys(valeur);
+	    	driver.findElement(champ).clear();
+	    	driver.findElement(champ).sendKeys(valeur);
 	    }
 	    
 	}
